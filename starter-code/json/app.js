@@ -27,7 +27,10 @@ var notActuallyJSON = {
 
 // The following line is valid JavaScript, but the object is not written in valid JSON syntax.
 // [ Step 2 ] Use JSONLint to validate the object in the following line; then, edit the object so it passes the validator.
-var eddie = {name:"Eddie Vedder", age:49};
+var eddie = {
+    "name": "Eddie Vedder",
+    "age": "49"
+};
 
 // We frequently want to turn a JavaScript object into a JSON string, and vice versa.
 // JavaScript has a built-in global object called `JSON` that contains a number of useful methods for manipulating JSON.
@@ -71,7 +74,8 @@ var grungeAlbums = {
     }
   ]
 };
-
+var grungeAlbumsJSON = JSON.stringify(grungeAlbums);
+console.log(grungeAlbumsJSON)
 
 // Imagine that we only had JSON to work with, and wanted to convert it to a JS Object.
 // Fortunately, the `JSON` global object converts both ways - to and from JSON.
@@ -81,6 +85,9 @@ var grungeAlbums = {
 // [ Step 4 ] Take `grungeAlbumsJSON` and convert it back into a JavaScript object.
 // Then, for each album in the list, do a console log printing out the album name, artist, and units sold.
 // Each album should be formatted as follows:
+var convert = JSON.parse(grungeAlbumsJSON)
+console.log(convert)
+//{"albums":[{"name":"Bleach","artist":"Nirvana","unitsSold":1700000},{"name":"Nevermind","artist":"Nirvana","unitsSold":30000000},{"name":"In Utero","artist":"Nirvana","unitsSold":15000000},{"name":"Ten","artist":"Pearl Jam","unitsSold":10000000},{"name":"Vs","artist":"Pearl Jam","unitsSold":6100000},{"name":"Vitalogy","artist":"Pearl Jam","unitsSold":4770000}]}
 
 //  Album: Album name
 //  Artist: Artist name
@@ -88,3 +95,19 @@ var grungeAlbums = {
 
 // [ Step 5 ] Create a custom JSON using the JSON validator from Step 1.
 // Convert it back to a JavaScript object, change it, and then convert it back to JSON again. Compare it to your original - how has it changed?
+var notActuallyJSON = {
+  "someKey": "someValue",
+  "innerArray": [
+    "alpha",
+    "beta",
+    "gamma",
+    "delta"
+  ]
+};
+
+var notActually = JSON.stringify(notActuallyJSON);
+console.log(notActually)
+
+//{"someKey":"someValue","innerArray":["alpha","beta","gamma","delta"]}
+var convert1 = JSON.parse(notActually)
+console.log(convert1)
